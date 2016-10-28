@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<!-- 每一个输入框有三个字符，当输入满三个字符之后，光标自动移到下一个字符输入框，开始时提交按钮不可用，三个字符输入都好了之后才可以提交按钮 -->
+
+<script type="text/javascript">
+	//控制光标，o表示调用该函数时用户作用的对象
+	function go(o,n){
+		if(o.value.length>=3 && n!=null){
+			document.getElementById(n).focus();
+		}
+		doValidate();
+	}
+	
+	function doValidate(){
+		var isValid=true;
+		var myForm=document.getElementById("myForm");
+		for (var i=0; i<myForm.length;i++){
+			var items=myForm.elements[i];
+			if(items.value.length<3){
+				isValid=false;
+				break;
+			}
+		}
+		document.getElementById("submitButton").disabled=!isValid;
+	}
+	
+</script>
+</head>
+
+<body>
+<form name="myForm" id="myForm">
+	<input type="text" name="t1" id="t1" size="3" onkeyup="go(this,'t2')" />
+    <input type="text" name="t2" id="t2" size="3" onkeyup="go(this,'t3')" />
+    <input type="text" name="t3" id="t3" size="3" onkeyup="doValidate()" />
+    <input type="submit" id="submitButton" value="submit" disabled="disabled" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>my web</title>
+<link href="css/myCss.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="JS/my_js.js"></script>
+</head>
+
+<body onLoad="clearBox()">
+<div id="top">
+<h1>欢迎来到我的网页！</h1>
+</div>
+
+<div id="menu">
+<a href="my_photo.html">我的照片</a>
+<a href="my_video.html">我的录像</a>
+<a href="my_journal.html">我的日记</a>
+</div>
+
+<div id="mainCol">
+<h2>我的录像</h2>
+<video src="video/初音演唱会.MTS" height="400" width="600">
+</video>  
+</div>
+
+<div class="JS">
+ <h3>查看student成绩</h1>
+ <div>
+ <input type="button" value="查看小红的成绩" onClick="alert((new student('小红',100,120,130,100,100)).toString1())">
+ <input type="button" value="查看小明的成绩" onClick="alert((new student('小明',120,120,100,0,90)).toString1())">
+ </div>
+</div>
+
+<div class="JS">
+ <h3>常用内置对象实训</h1>
+ <div>
+ <input type="button" value="字符串删空格实验" onClick="alert(trim('  你       好    '))">
+ </div>
+</div>
+
+<div class="JS">
+<h3>游戏：猜猜我在上海哪个区～</h3>
+<form name="myForm" method="post" onSubmit="guessit(); return false;" >
+<div id="hint">输入你的答案，然后按回车键。</div>
+<div><input type="text" name="guess" id="guess"></div>
+<input type="button"name="tryy" id="tryy" value="再玩一次" onClick="newGame()">
+
+</form>
+<div>
+
+<div class="JS">
+ <h3>常用文档对象实训-学生成绩输入系统</h1>
+ <div>
+ <form id="formGrade">
+ <div>
+ <b>学生名单</b>
+ <br>
+ <select name="nameList" id="nameList" size="6" onChange="doSelect();">
+ 	<option value="001">张一仙</option>
+    <option value="002">张二仙</option>
+    <option value="003">张三仙</option>
+    <option value="004">张四仙</option>
+ </select>
+ <img src="img/my.JPG" id="studentImg" alt="studentImg" width="50" height="70">
+ <br>
+
+<table>
+	<tr>
+		<td>联系方式：</td>
+        <td><input type="text" mame="emailss" id="emailss" style="border:none;" disabled="true"><a href="emailto:2222@aa.com" id="eMailHe">联系他</a></td>
+	</tr>
+	<tr>
+    	<td>语文：</td>
+        <td><input type="text" mame="语文" id="chinese"></td>
+	</tr>
+	<tr>
+    	<td>数学：</td>
+        <td><input type="text" mame="math" id="math"></td>
+	</tr>
+	<tr>
+    	<td>
+        	<input type="radio" name="other" id="other1" checked><span>历史：</span>
+            <br>
+        	<input type="radio" name="other" id="other2" ><span>常识：</span>
+        </td>
+        <td><input type="text" mame="other" id="other"></td>
+	</tr>
+	<tr>
+    	<td>体育：</td>
+        <td><input type="text" mame="PE" id="PE"></td>
+	</tr>
+</table>
+<br>
+<input type="button" id="Submit" name="Submit" value="提交" onClick="doSubmit();"><br>
+ </div>
+ </form>
+ 
+ 
+ </div>
+</div>
+
+
+</div>
+</div>
+<div id="footer">
+<a href="mailto:254447272@qq.com">请您留言</a>
+<span><script type="application/javascript">
+	document.write(document.lastModified);
+</script></span></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+function clickme(){
+	var att="width=100px,height=200px,top=300px,left=400px;"
+	window.open('http://www.baidu.com','百度 ',att);
+	window.focus();
+}
+
+function clickme2(url,width,height){
+	alert(history.length);
+	history.go(-1);
+	var screenWidth=screen.availWidth;
+	var screenHeight=screen.availHeight;
+	var left=0.5*(screenWidth-width);
+	var top=0.5*(screenHight-height);
+	window.alert(width);
+	window.self.resizeTo(screenWidth,screenHeight);
+	window.self.moveTo(0,0);
+	
+	var att="location=1,menubar=1";
+	myWin=window.open(url,"test",att);
+	myWin.resizeTo(width,height);
+	myWin.moveTo(left,top);
+	myWin.focus();
+}
+</script>
+
+</head>
+
+<body>
+
+<a id="click" onclick="clickme()">click me</a>
+<a onclick="clickme2('http://www.baidu.com',640,480)">another click</a>
+</body>
+</html>

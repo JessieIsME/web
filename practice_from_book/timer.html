@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>timer</title>
+<script type="text/javascript">
+var count=11;
+var i=0;
+var s=0;
+var d=1000;
+var msg=new Array("welcome to","baidu.com");
+
+function timer(){
+	count=count-1;
+	document.getElementById("timer").innerHTML=count;
+	
+	if(count>0){
+		window.setTimeout(timer,1000);
+	}
+	
+}
+
+function changeMsg(){
+	if(i>=msg.length){
+		window.location.href=("http://www.baidu.com");
+		return true;
+	}
+	txt=document.getElementById("content");
+	txt.innerHTML=msg[i];
+	s=0;
+	zoomText();
+	i++;
+	setTimeout("changeMsg()",d);
+}
+
+function zoomText(){
+	if(s<50){
+		txt.style.fontSize=s+"pt";
+		s+=5;
+		setTimeout("zoomText()",30);
+	}
+}
+
+</script>
+</head>
+
+<body>
+<div>
+<h1>Time left:<b id="timer">10</b></h1><input type="button" id="mybutton" value="开始计时" onClick="timer()"/>
+</div>
+
+<div id="content">
+<input type="button" value="跳转" onClick="changeMsg()"/>
+
+</div>
+
+
+
+</body>
+</html>

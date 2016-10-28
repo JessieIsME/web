@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dynamic test</title>
+<!--动态改变网页显示内容-->
+
+<script type="text/javascript">
+	function display(){
+		title=document.getElementById("titleBar").innerHTML;
+		alert(title);
+	}
+	function change(){
+		document.getElementById("titleBar").innerHTML='这是<span style="border: 1px solid">改变后 </span>的标题'
+	}
+
+</script>
+</head>
+
+<body>
+<h1 id="titleBar"> 这是一个测试标题</h1>
+<div>
+<input type="button" id="mybutton1" name="mybutton" value="显示" onclick="display()" />
+<input type="button" id="mybutton2" name="mybutton2" value="修改" onclick="change()" />
+</div>
+
+</body>
+</html>

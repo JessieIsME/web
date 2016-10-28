@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	margin:0;
+	padding:0;
+	background-color:#F2F2F1;
+	font-size:14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+a{
+	color:#E58712;
+	text-decoration:none;/*下划线*/
+	font-size:16px;
+}
+
+#menu a:hover{
+	color:#9BB38;
+	background:#000;
+	}
+
+#top{
+	height:60px;
+	background-image:url(../img/my.JPG);
+}
+
+h1{
+	color:#9BBFF;
+	margin:20px 0;
+	padding:0 0 0 100px;
+	font-size:40px;
+}
+h2{
+	color:#fff;
+	background-color:#9BBB38;
+	padding:10px;
+	font-size:16px;
+}
+h3{
+	color:#9BBB38;
+	font-size:15px;
+}
+b{
+	color:#993;
+	font-size:13px;
+}
+
+#menu a{margin-right:20px; background:#9BBB38}
+#menu{
+	background:#9BBB38;
+	color:#fff;
+	padding:4px;10px;
+}
+#mainCol{padding:10px;}
+#journal #mainCol{margin:0 170px;}
+#footer{
+	text-align:right;
+	padding:10px;
+	border-top:solid #9BBB38 3px;
+}
+
+br{clear:both;}
+.outer{
+	float:left;
+	margin:10px;
+}
+#mainCol .outer div{text-align:center;}
+
+#leftCol, #rightCol{
+	width:150px;
+	background-color:#FAFAF0;
+	margin-top:10px;
+}
+#leftCol a, #rightCol a{
+	display:block;/*让a标签单独成行*/
+	padding:4px 10px;
+}
+#leftCol a:hover, #rightCol a:hover{background:#000;}
+#leftCol{float:left;}
+#rightCol{float:right;}
+
+.JS{
+	border-top:#9BBB38 solid 3px;
+	margin:20px;
+}

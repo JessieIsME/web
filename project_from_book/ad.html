@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+
+<script type="text/javascript">
+var c=0;
+var bars="||";
+var delta="||";
+
+function waitingBar(){
+	c=c+2;
+	bars=bars+delta;
+	document.getElementById("bar").value=bars;
+	document.getElementById("percent").value=c+"%";
+	if(c<100)setTimeout("waitingBar()",200);
+	else document.location.href="http://www.baidu.com";
+}
+</script>
+</head>
+
+<body onLoad="waitingBar();" style="background-color:#FFF">
+
+<table width="400px" align="center">
+<tr>
+	<td align="center">
+    	<iframe src="http://www.a4flash.com/design/viewtype1.php?id=INT005" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+    </td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td align="center">网页载入中Y(^_^)Y……</td>
+</tr>
+<tr>
+	<td align="center">
+    	<input type="text" id="bar" size="46" style="font-family:Arial, Helvetica, sans-serif; font-weight:bolder; color:#000; background-color:#EAEAEA; padding:0px; border-style:none;">
+    </td>
+</tr>
+<tr>
+	<td align="center">
+    	<input type="text" id="percent" size="46" style="font-family:Arial, Helvetica, sans-serif; font-weight:bolder; color:#000; background-color:#fff; padding:0px; border-style:none; text-align:center;">
+    </td>
+</tr>
+</table>
+
+
+
+</body>
+</html>

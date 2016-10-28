@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>菜单</title>
+<style type="text/css">
+#menu div{
+position:absolute;
+visibility:hidden;
+margin:0px;
+padding:0px;
+background:#ccc;
+border: 1px solid black; 
+}
+
+#m1 a{
+	position:relative;
+	display:block;
+	margin:0;
+	padding:5px 10px;
+	widoth:auto;
+	white-space:nowrap;
+	text-align:left;
+	text-decoration:none;
+	background:#9C0;
+	font:11px Arial, Helvetica, sans-serif;
+}
+
+a1:hover{
+	background:#0FF;
+	color:#F00;
+}
+
+
+#menu ul li{float:left;
+margin:4px;
+background-color:yellow;}
+
+#menu ul{text-align:left;
+margin:2px;
+background-color:#9F9;
+} 
+
+</style>
+
+<script type="text/javascript">
+var timeout=500;
+var closetimer=0;// 隐藏下拉菜单用的定时器
+var ddmenuitem=0;
+
+function mopen(id){//  打开下拉菜单
+	mcancelclosetime();// 只要鼠标还在悬浮，就应该关闭计时器
+	if(ddmenuitem) ddmenuitem.style.visibility='hidden';
+	ddmenuitem=document.getElementById(id);
+	ddmenuitem.style.visibility='visible';//把旧的下拉菜单关闭，打开新的下拉菜单
+}
+
+function mclose(){//关闭下拉菜单
+	if(ddmenuitem)ddmenuitem.style.visibility='hidden';
+}
+
+function mclosetime(){//鼠标移除之后，经过一定时间关闭下拉菜单
+	closetimer=window.setTimeout(mclose,timeout);
+}
+
+function mcancelclosetime(){//中断关闭计时器
+	if(closetimer) { window.clearTimeout(closetimer);
+	closetimer=null;
+	}
+}
+
+</script>
+
+</head>
+<body>
+<div id="menu">
+<ul>
+<li><a href="#" id="a1" onMouseOver="mopen('m1')" onMouseOut="mclosetime()">主页内容</a>
+<div id="m1" onMouseOver="mcancelclosetime()" onMouseOut="mclosetime()">
+ <a href="#">菜单1</a>
+ <a href="#">菜单2</a>
+ <a href="#">菜单3</a>
+ <a href="#">菜单4</a>
+ <a href="#">菜单5</a>
+</div>
+
+</li>
+<li><a href="#">搜索</a></li>
+<li><a href="#">联系我们</a></li>
+</ul>
+</div>
+<br>
+<div id="content">
+ 这是主页内容
+</div>
+</body>
+
+</html>

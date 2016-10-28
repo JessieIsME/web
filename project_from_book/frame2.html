@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script language="javascript">
+function controler(n){
+	switch(n){
+		case 1:
+			parent.document.body.cols="99%,30,0";
+			document.getElementById("f1").disabled=true;
+			document.getElementById("f2").disabled=false;
+			document.getElementById("f3").disabled=false;
+			break;
+		case 2:
+			parent.document.body.cols="0,30,99%";
+			document.getElementById("f1").disabled=false;
+			document.getElementById("f2").disabled=true;
+			document.getElementById("f3").disabled=false;
+			break;
+		case 3:
+			parent.document.body.cols="50%,30,*";
+			document.getElementById("f1").disabled=false;
+			document.getElementById("f2").disabled=false;
+			document.getElementById("f3").disabled=true;
+			break;
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+<input type="button" value=">" style="background-color:#F00;padding-top:50px;padding-bottom:50px;" onClick="controler(1)" id="f1"><br>
+<input type="button" value="<" style="background-color:#F00;padding-top:50px;padding-bottom:50px;" onClick="controler(2)" id="f2"><br>
+<input type="button" value="|" style="background-color:#FFF;padding-top:50px;padding-bottom:50px;" onClick="controler(3)" id="f3"><br>
+
+</body>
+
+</html>

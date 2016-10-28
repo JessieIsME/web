@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<script type="text/javascript">
+	//moveList/是用来移动两个列表之间的元素的
+	function moveList(fromId,toId){
+		var fromList=document.getElementById(fromId);
+		var fromLen=fromList.options.length;
+		var toList=document.getElementById(toId);
+		var toLen=toList.options.length;
+		var current=fromList.selectedIndex;//当前选中元素的序号
+		 while(current>-1){
+			var o=fromList.options[current];//当前选中元素
+			var t=o.text;
+			var v=o.value;
+			var optionName=new Option(t,v,false,false);
+			toList.options[toLen]=optionName;
+			toLen++;
+			fromList.options[current]=null;
+			current=fromList.selectedIndex; 
+		 }
+	}
+</script>
+
+<style type="text/css">
+#leftList, #rightList,#buttons{display:block;float:left;margin:10px;}
+#leftList,#rightList{width:60px;}
+#buttons{width:40px;}
+	
+</style>
+</head>
+
+<body>
+<form>
+	<select name="leftList" id="leftList" multiple="multiple" size="6">
+    	<option>a</option>
+        <option>b</option>
+        <option>c</option>
+    </select>
+    <div id="buttons">
+    	<input type="button" name="to" id="to" value=">>" onclick="moveList('leftList','rightList')" />
+        <input type="button" name="backTo" id="backTo" value="<<" onclick="moveList('rightList','leftList')" />
+    </div>
+    <select name="rightList" id="rightList" multiple="multiple" size="6">
+    	<option>d</option>
+        <option>e</option>
+        <option>f</option>
+    </select>
+</form>
+</body>
+</html>

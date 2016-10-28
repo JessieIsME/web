@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>frame1</title>
+<script type="text/javascript">
+function change(){
+	var s=document.getElementById("pp");
+	if(s.innerHTML=="我是小王"){
+		s.innerHTML="我是小黑";
+	}
+	else{
+		s.innerHTML="我是小王";
+	}
+}
+
+function open1(){
+	//alert("hello");
+	parent.frame2.location.href=window.document.forms[0].texUrl.value;
+	
+}
+function cleanWeb(){
+	parent.frame2.location.href="about:blank";
+}
+function writeWeb(){
+	parent.frame2.document.open();
+	parent.frame2.document.write("this is from upword frame1. And I am frame2.");
+	parent.frame2.document.close();
+}
+function fullAll(flag){
+	if(flag==1){
+	parent.document.body.rows="100%,*";
+	}
+	else{
+		parent.document.body.rows="20%,80%";
+	}
+}
+
+function resizeFrame(flag){
+	if(flag==1){
+	parent.document.body.rows="100%,*";
+	}
+	else{
+		parent.document.body.rows="20%,80%";
+	}
+}
+function changeList(){
+	parent.frame2.document.location.href="frame2.html?type="+document.forms[0].filter.value;
+}
+</script>
+</head>
+
+<body onLoad="resizeFrame(1)">
+<form>
+<p id="pp">我是小王</p>
+<input type="button" onClick="change()" id="mybutton" value="change">  <br />
+URL 地址：<input type="text" name="texUrl" />
+<input type="button" name="ok" id="ok" value="显示网页" onclick="open1()" />
+<input type="button" name="cancel" id="cancel" value="清空网页" onClick="cleanWeb()" />
+<input type="button" name="write" id="write" value="向网页写文字" onClick="writeWeb()" />
+<input type="button" value=" 全充满" onClick="fullAll(1)"/>
+<input type="button" value="还原 " onClick="fullAll(0)"/>
+<br/>
+请输入公司信息：<br/>
+<hr>
+名称：<input type="text"><br>
+地址：<input type="text"><br>
+编号：<input type="text"><br>
+<hr>
+<select name="filter" onChange="changeList()" style="width:150px;">
+<option value="0">请选择公司规模</option>
+<option value="small">Small</option>
+<option value="large">Large</option>
+</select>
+<br>
+<div id="displayDetail"></div>
+</form>
+</body>
+</html>

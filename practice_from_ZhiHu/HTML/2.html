@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>倒计时时钟</title>
+<style type="text/css">
+body{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:15px;
+	color:#fff;
+}
+#box{
+	background-color:#333;
+	border:0;
+	padding:30px 10px;
+	
+	text-align:center;
+	width:290px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#myButton{
+	width:283px;
+	height:40px;
+	padding:5px 5px;
+	background-color:#0C0;
+	border-radius:8px;
+	font-size:20px;
+	font-style:normal;
+	color:#fff;
+	cursor:pointer;
+}
+#Minute, #Second{
+	width:30px;
+	margin:5px;
+	font-size:15px;
+	text-align:center;
+	border:double;
+}
+
+</style>
+
+<script type="text/javascript">
+var m;
+var s;
+var time;
+
+
+function start(){
+	var a=document.getElementById("myButton").value;
+	m=parseInt(document.getElementById("Minute").value,10);
+	s=parseInt(document.getElementById("Second").value,10);
+	time=(m*60+s);
+	if(a=="启动"){
+		document.getElementById("myButton").value="取消";
+		ok=window.setInterval(update,1000);
+	}
+	else{
+		document.getElementById("myButton").value="启动";
+		window.clearInterval(ok);
+	}
+}
+
+function update(){
+	time--;
+	if(time<0){
+			alert("stop");
+			window.clearInterval(ok);
+			document.getElementById("myButton").value="启动";
+			return;
+	}
+	document.getElementById("Minute").value=Math.floor(time/60);
+	document.getElementById("Second").value=time-Math.floor(time/60)*60;
+	
+	
+}
+
+
+</script>
+
+</head>
+<div id="box">
+<h3>倒计时时钟</h3>
+<p>你可以更改时间，启动或取消。如果觉得慢，还可以偷偷改换时间哦。</p>
+<hr>
+
+<input type="text" id="Minute" name="Minute" value="01">分钟
+<input type="text" id="Second" name="Second" value="30">秒
+<br><br>
+<input type="button" id="myButton" name="myButton" value="启动" onClick="start()">
+
+
+</div>
+<body>
+</body>
+</html>
