@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>9. Palindrome Number</title>
+<script type="text/javascript">
+
+  /**
+  * 9. Palindrome Number
+  Determine whether an integer is a palindrome. Do this without extra space.
+  
+  * @param {number} x
+  
+  * @return {boolean}
+  
+  */
+
+var isPalindrome = function(x) {
+	var result=true;
+	if(x<0)return false;
+    var s=x+"";
+	//alert(s.length);
+	for(var i=0;i<s.length/2;i++){
+		//alert(s[i]);
+		if(s[i]!=s[s.length-1-i]){
+			result=false;	
+		}
+	} 
+	return result; 
+};
+
+
+</script>
+
+
+</head>
+
+<body onLoad="isPalindrome(1234321)">
+
+</body>
+</html>

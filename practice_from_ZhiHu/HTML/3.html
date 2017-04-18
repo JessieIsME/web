@@ -68,7 +68,7 @@ function judge(){
 		ims[i].index=i;
 		ims[i].onmouseover=function()
 		{
-			flag=0;
+			//flag=0;
 			changeImg(this.index);
 			
 		}
@@ -76,8 +76,9 @@ function judge(){
 			clearImg(this.index);
 		}
 		ims[i].onclick=function(){
+			flag=this.index;
 			changeImg(this.index);
-			flag=1;
+			
 		}
 	
 	}
@@ -96,11 +97,16 @@ function changeImg(n){
 }
 function clearImg(n){
 	document.getElementById("ppMessage").style.visibility="hidden";
-	if(flag==0){
-		for (j=0;j<=ims.length-1;j++){
+	
+		for (j=flag+1;j<=ims.length-1;j++){
 			ims[j].src="../img/3/2.png"
+		
+		if(flag==0)document.getElementById("ssMessage").innerHTML="";
+		else{
+			n=flag;
+			document.getElementById("ssMessage").innerHTML="<strong>"+(n+1)+"分</strong>  ("+msg[n].substring(0,msg[n].indexOf("|"))+","+msg[n].substring(msg[n].indexOf("|")+1)+")";
+			
 		}
-		document.getElementById("ssMessage").innerHTML="";
 	}
 	
 }

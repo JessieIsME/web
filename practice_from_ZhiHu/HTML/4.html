@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>控制div</title>
+<style type="text/css">
+#instruct{
+	background:#CCC;
+	border:#000 dotted 2px;;
+	border-radius:5px;
+	color:#FF0000;
+	height:250px;
+	width:1274px;
+}
+#taller, #wider, #resetdiv{
+	background:#333;
+	color:#fff;
+	border-radius:5px;
+}
+
+#move{
+	position:absolute;
+	top:150px;
+	left:200px;
+	width:100px;
+	height:100px;
+	background:#f00;
+	border:solid 3px #000;
+	border-radius:5px;	
+}
+</style>
+<script type="text/javascript">
+	var toppx=150;
+	var leftpx=200;
+	var goleft=goright=gotop=godown=control=larger=smaller=false;
+	var color=0;
+	var height=100;
+	var width=100;
+	//document.getElementById("move").style.height="100px";
+	//document.getElementById("move").style.width="100px";
+	
+window.onload=function(){
+	document.getElementById("move").style.width="100px";
+	document.getElementById("move").style.height="100px";
+	
+	document.onkeydown=function(event){
+	//alert(event.keyCode);
+	control=event.ctrlKey;
+	switch(event.keyCode){
+		case 37://左
+			goleft=true;		
+			break;
+		case 38://上　
+			gotop=true;
+			break;
+		case 39://右
+			goright=true;
+			break;
+		case 40://下
+			godown=true;
+			break;	
+		case 49:
+			color=1;
+			break;
+		case 50:
+			color=2;
+			break;
+		case 51:
+			color=3;
+			break;
+		case 187:
+			larger=true;
+			break;
+		case 189:
+			smaller=true;
+			break;			
+		default:;
+		}
+	}
+	
+	document.onkeyup=function(event){
+		control=event.ctrlKey;
+		switch(event.keyCode){
+		case 37://左
+			goleft=false;		
+			break;
+		case 38://上　
+			gotop=false;
+			break;
+		case 39://右
+			goright=false;
+			break;
+		case 40://下
+			godown=false;
+			break;	
+		case 187://加号
+			larger=false;
+			break;
+		case 189://减号
+			smaller=false;
+			break;	
+		}
+	}
+	
+	setInterval(function(){
+		
+		if(goleft)leftpx-=2;
+		if(goright)leftpx+=2;
+		if(gotop)toppx-=2;
+		if(godown)toppx+=2;
+		if(control&&color==1) document.getElementById("move").style.backgroundColor="green";
+		if(control && color==2) document.getElementById("move").style.backgroundColor="yellow";
+		if(control && color==3) document.getElementById("move").style.backgroundColor="blue";
+		if(control && smaller){
+			document.getElementById("move").style.height=parseInt(document.getElementById("move").style.height)*0.9+"px";
+			document.getElementById("move").style.width=parseInt(document.getElementById("move").style.width)*0.9+"px";
+		}
+		if(control && larger){
+			document.getElementById("move").style.height=parseInt(document.getElementById("move").style.height)*1.1+"px";
+			document.getElementById("move").style.width=parseInt(document.getElementById("move").style.width)*1.1+"px";
+		}
+		
+		if(control && larger)alert("large");
+		check();
+		document.getElementById("move").style.top=toppx+"px";
+		document.getElementById("move").style.left=leftpx+"px";
+		
+	},30);
+}
+//检查溢出	
+function check(){
+	if(leftpx<0)leftpx=0;
+	if(leftpx> document.documentElement.clientWidth-100)leftpx=document.documentElement.clientWidth-100;
+	if(toppx<0)toppx=0;
+	if(toppx>document.documentElement.clientHeight-100)toppx=document.documentElement.clientHeight-100;
+}
+
+//点击
+function taller(){
+	document.getElementById("move").style.height=parseInt(document.getElementById("move").style.height)*1.2+"px";
+}
+
+function wider(){
+	document.getElementById("move").style.width=parseInt(document.getElementById("move").style.width)*1.2+"px";
+}
+	
+function resetAll(){
+	document.getElementById("move").style.width="100px";
+	document.getElementById("move").style.height="100px";
+	document.getElementById("move").style.backgroundColor="red";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="instruct">
+ <p>红色方块为键盘操作区域，您可以进行如下操作：<br>
+ 上：↑ 下：↓ 左：← 右：→<br>
+ <table>
+ <tr>
+ 	<td>Ctrl </td>
+ 	<td>+ </td>
+ 	<td>1 </td>
+    <td>: </td> 
+    <td>背景变为绿色</td>
+ </tr>
+ <tr>
+ 	<td>Ctrl </td>
+ 	<td>+ </td>
+ 	<td>2 </td>
+    <td>: </td>
+    <td>背景变为黄色</td>
+ </tr>
+ <tr>
+ 	<td>Ctrl </td>
+ 	<td>+ </td>
+ 	<td>3 </td>
+    <td>: </td>
+    <td>背景变为蓝色</td>
+ </tr>
+ <tr>
+ 	<td>Ctrl </td>
+ 	<td>+ </td>
+ 	<td>+</td>
+    <td>: </td>
+    <td>放大</td>
+ </tr>
+ <tr>
+ 	<td>Ctrl </td>
+ 	<td>+ </td>
+ 	<td>- </td>
+    <td>: </td>
+    <td>缩小</td>
+ </tr>
+ </table>
+</p>
+
+<input type="button" id="wider" name="wider" value="变宽" onClick="wider()">
+<input type="button" id="taller" name="taller" value="变高 " onClick="taller()">
+<input type="button" id="resetdiv" name="resetdiv" value="复原" onClick="resetAll()">
+</div>
+
+<div id="move"></div>
+</body>
+</html>

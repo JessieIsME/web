@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<html>
+<body>
+
+<script type="text/javascript">
+
+var a = ["Hello","Alaska","Dad","Peace"];
+
+var findWords = function(words) {
+
+    var str1=['Q','W','E','R','T','Y','U','I','O','P'];
+
+    var str2=["A","S","D","F","G","H","J","K","L"];
+
+    var str3=["Z","X","C","V","B","N","M"];
+
+    var result=[];
+
+    var flag=true;
+
+    for (var i=0;i<words.length;i++){
+		flag=true;
+        var str=str1;
+	    if(str2.indexOf(words[i][0])>-1)str=str2;
+        else if(str3.indexOf(words[i][0])>-1)str=str3;
+		alert(words[i][0]+" is in "+str);
+		
+
+        for(var j=0;j<words[i].length;j++){
+			alert(words[i].length);
+
+            if(str.indexOf(words[i][j].toUpperCase())<0){
+
+                flag=false;
+
+                break;
+
+            }
+
+        }
+
+        if(flag)result.push(words[i]);
+
+    }
+
+    return result;
+
+};
+
+function dothis(){
+	n=    4294967295;//(11111111111111111111111111111111) ;//(10000000000000000000000000000000)
+	alert((n>>>0).toString(2));
+	var s=(n>>>0).toString(2).replace(/0/g,'');
+	alert(s.length);
+    //alert( (s[0]==1)?s.length:s.length-1);
+}
+
+var reverseBits = function(n) {
+	alert(((2147483648>>>0)>>>16)===
+    var s=(n>>>0).toString(2);
+	alert(s);
+
+    var result=[];
+
+    var result1='';
+
+    for(var i=0;i<s.length;i++){
+
+        result.push(s[i]);
+
+    }
+	alert(result);
+
+    for(i=0;i<s.length;i++){
+
+        result1+=result.pop();
+
+    }
+	
+
+    alert (parseInt(result1,2));
+
+    
+
+};
+</script>
+
+</head>
+
+<body onLoad="reverseBits(0)">
+
+</body>
+</html>

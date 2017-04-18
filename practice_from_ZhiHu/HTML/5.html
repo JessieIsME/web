@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>鼠标点击移动</title>
+<style type="text/css">
+#runrun{
+	background-image:url(../img/5/run_stop.jpg);
+	background-size:contain;
+	background-repeat:no-repeat;
+	position:absolute;
+	left:100px;
+	top:200px;
+	width:50px;
+	height:50px;
+}
+</style>
+</head>
+
+<body>
+<h1>你点我跑</h1>
+<input type="button" id="run1" onClick="runMode1(this)" value="根据鼠标点击位置移动">
+<input type="button" id="run2" onClick="runMode2(this)" value="根据标鼠标轨迹移动">
+ <p id="pp">点击按钮激活功能～</p>
+ <div id="runrun"></div>
+
+<script type="text/javascript">
+
+function runMode1(s){
+	resetAll();
+	s.value+="(已激活！)";
+	document.getElementById("run2").value="根据标鼠标轨迹移动";
+	document.getElementsByTagName("p")[0].innerHTML="鼠标点击页面， 人物将移动至鼠标位置！";
+	document.onclick=function(event){
+		positionsX=(event||window.event).clientX;
+		positionsY=(event||window.event).clientY;	
+		var myDIV=document.getElementById("runrun");
+		myDIV.style.backgroundImage="url(../img/5/run.gif)";
+		runTo(myDIV,positionsX,positionsY);
+	}
+	
+}
+
+
+function runTo(obj,posX,posY){
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		moveStep(obj,posX,posY);
+	},10);
+}
+function moveStep(obj,posX,posY){
+		//alert(posX);
+		stepX=(posX-obj.offsetLeft)/20;
+		stepY=(posY-obj.offsetTop)/20;
+		stepX=(stepX>0)?Math.ceil(stepX):Math.floor(stepX)
+		stepY=(stepY>0)?Math.ceil(stepY):Math.floor(stepY);
+		if(obj.offsetLeft==posX && obj.offsetTop==posY){
+			clearInterval(obj.timer);
+			obj.style.backgroundImage
+			obj.style.backgroundImage="url(../img/5/run_stop.jpg)";
+		}
+		else{
+			obj.style.left=obj.offsetLeft+stepX+"px";
+			obj.style.top=obj.offsetTop+stepY+"px";
+		}
+}
+function runMode2(s){
+	resetAll();
+	document.getElementById("run1").value="根据鼠标点击位置移动";
+	s.value+="(已激活！)";
+	document.getElementsByTagName("p")[0].innerHTML="按住鼠标左键，在页面划动，人物将按照鼠标轨迹移动。";
+	var MyDiv=document.getElementById("runrun");
+	var savePath=[{x:0, y:0}];
+	//alert(savePath.length);
+	document.onmousedown=function(event){
+		//alert(event.clientX);
+		
+		positionsX=(event||window.event).clientX;
+		positionsY=(event||window.event).clientY;
+		savePath.push({x:positionsX,y:positionsY});
+		
+		document.onmousemove=function(event){
+			positionsX=(event||window.event).clientX;
+		    positionsY=(event||window.event).clientY;
+			savePath.push({x:positionsX,y:positionsY});
+			return false;
+		}	
+		return false;
+		
+	}
+	document.onmouseup=function(event){
+		document.onmousemove = null;
+		savePath.shift();
+		alert("length="+savePath.length);
+		alert("first="+savePath[0].x);
+		document.getElementById("runrun").style.backgroundImage="url(../img/5/run.gif)";
+		timer=setInterval(function(){
+			if(savePath.length==0){
+				clearInterval(timer);
+				MyDiv.style.backgroundImage="url(../img/5/run_stop.jpg)";
+			}
+			else{
+				MyDiv.style.left=savePath[0].x+"px";
+				MyDiv.style.top=savePath[0].y+"px";
+				savePath.shift();
+				//alert("here");
+			}
+			
+		},200);
+		//MyDiv=document.getElementById("runrun");
+		//MyDiv.style.backgroundImage="url(../img/5/run.gif)";
+		return false;
+
+	}
+}
+	
+function resetAll(){
+	(event || window.event).cancelBubble = true;// 截取点击按钮时产生的点击动作
+	document.getElementById("runrun").style.backgroundImage="url(../img/5/run_stop.jpg)";
+	document.getElementById("run1").value="根据鼠标点击位置移动";
+	document.getElementById("run2").value="根据标鼠标轨迹移动";
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Have Hun with A-Frame</title>
+    <meta name="description" content="Have Hun with A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="components/set-image.js"></script>
+     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+  </head>
+  <body> 
+    <a-scene>
+      <!-- Image links. -->
+      <a-assets>
+        <img id="ying" crossorigin="anonymous" src="img\ying.jpg">
+        <img id="liu" crossorigin="anonymous" src="img\liu.jpg">
+        <img id="chimu" crossorigin="anonymous" src="img\chi.jpg">
+        <img id="xiandao" crossorigin="anonymous" src="img\xian.jpg">
+        <img id="mumu" crossorigin="anonymous" src="img\mu.jpg">
+        <img src="https://img.gs/bbdkhfbzkk/2048x1024,stretch/http://i.imgur.com/WMNH2OF.jpg" id="chrome" crossorigin="anonymous">
+        <a-asset-item id="exoFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2Black.typeface.json?1490305922150"></a-asset-item>
+      </a-assets>
+      
+      <a-sky id="image-360" radius="10" rotation="0 -90 0" src="img\sky.jpg"></a-sky>
+
+
+      <a-entity position="-4 1 -5" scale="0.6 1.2 1" text-geometry="value: choose your favorite; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 1; size: 1.0; height: 0.5;" material="color:pink; metalness:0.9; roughness: 0.05; sphericalEnvMap: #chrome;"></a-entity>
+<!--5 box start here -->
+<!--1-->
+<a-box position="-4 -0.5 -5" rotation="0 45 45" scale="1 1 1" src="#ying">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="-4 -0.3 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="1.5 1.5 1.5"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+  </a-box>
+  <!--2-->
+<a-box position="-2 -0.5 -5" rotation="0 45 45" scale="1 1 1" src="#liu">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="-2 -0.3 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="1.5 1.5 1.5"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+  </a-box>
+  <!--3-->
+<a-box position="0 -0.5 -5" rotation="0 45 45" scale="1 1 1" src="#mumu">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="0 -0.3 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="1.5 1.5 1.5"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+  </a-box>
+  <!--4-->
+<a-box position="2 -0.5 -5" rotation="0 45 45" scale="1 1 1" src="#chimu">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="2 -0.3 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="1.5 1.5 1.5"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+  </a-box>
+  <!--5-->
+<a-box position="4 -0.5 -5" rotation="0 45 45" scale="1 1 1" src="#xiandao">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="4 -0.3 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="1.5 1.5 1.5"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+  </a-box>
+  <!--camera->cursor-->
+  <a-camera>
+    <a-cursor color="#FAFAFA">
+  </a-camera>
+
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body onLoad="deleteDuplicates(sum)">
+<script type="text/javascript">
+function ListNode(val){
+	this.val = val;
+	this.next = null;
+}
+var sum=new ListNode(1);
+sum.next=new ListNode(1);
+sum.next.next=new ListNode(2);
+
+var deleteDuplicates = function(head) {
+	var temp=new ListNode(head.val);
+	temp.next=head;
+    while(temp){
+        if(temp.next==temp){
+            var de=temp.next.next;
+            delete temp.next;
+            temp.next=de;
+			alert(temp.next.var);
+        }
+        else temp=temp.next;
+    }
+    alert( head.var);
+}
+</script>
+</body>
+</html>
